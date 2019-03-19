@@ -3,7 +3,7 @@
 ## React & Redux
 
 - [React](./React/react.md)
-- [Redux](./React/redux.md)
+- [Redux](https://github.com/RDCLder/egghead.io_redux_course_notes)
 
 ## React Native
 
