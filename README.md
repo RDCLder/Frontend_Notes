@@ -8,4 +8,5 @@
 ## React Native
 
 - [React Native](./React_Native/react_native.md)
+- [General Components](./React_Native/gen_comp.md)
 - [React Native Web](https://github.com/necolas/react-native-web)
