@@ -161,6 +161,12 @@ List view components only render elements that are currently showing on the scre
 
 - **[SectionList](https://facebook.github.io/react-native/docs/sectionlist.html)**
   - Like **FlatList** but for sectioned lists
+  - Methods
+    - scrollToLocation
+    - recordInteraction
+    - flashScrollIndicators
+  - Type Definitions
+    - Section
   - e.g.
     ```js
     // Homogeneous Rendering
