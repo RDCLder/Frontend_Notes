@@ -185,7 +185,7 @@ List view components only render elements that are currently showing on the scre
     />
     ```
     ```js
-    Heterogeneous Rendering/No Section Headers
+    // Heterogeneous Rendering / No Section Headers
     
     const overrideRenderItem = ({ item, index, section: { title, data } }) => <Text key={index}>Override{item}</Text>
 
