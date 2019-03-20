@@ -34,6 +34,28 @@
   - Native code can increase performance at the cost of compatibility
     - JavaScript can have compatibility issues with native languages
 
+- Limitations
+  - Very little cross-platform styling of components
+    - Each platform might require some amount of custom styling specific to that platform
+  - Only a basic set of pre-built components
+    - Although there are component libraries, they aren't as extensive as those in native libraries
+  - No inherent responsive design
+    - Requires custom logic or outside tools
+  - Still in beta and active development
+    - Version 0.59 has been released as of this writing
+  - Overall worse performance than true native apps
+  - There are ways to overcome these limitations
+
+- Alternatives
+  - Real native apps using native languages
+    - Android:  Java, Kotlin
+    - iOS: Swift, Objective-C
+  - Progressive Web App
+    - Users might not use a browser/OS which supports PWAs
+  - Similar cross-platform libraries/frameworks
+    - Ionic or Cordova which takes a web app and wraps it in a WebView
+    - Worse performance due to WebView
+
 ## Create New Project
 
 - [Create React Native App](https://github.com/react-community/create-react-native-app)
