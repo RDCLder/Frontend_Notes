@@ -48,10 +48,6 @@ Most apps will use the following components.
       style={{width: 50, height: 50}}
       source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
     />
-    <Image
-      style={{width: 66, height: 58}}
-      source={{uri: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg=='}}
-    />
     ```
 
 - **[TextInput](https://facebook.github.io/react-native/docs/textinput.html)**
@@ -67,13 +63,40 @@ Most apps will use the following components.
 
 - **[ScrollView](https://facebook.github.io/react-native/docs/scrollview.html)**
   - Provides a scrolling container that can host multiple components and views.
-  - e.g.
-    ```js
-    
-    ```
+  - Methods
+    - ```scrollTo```
+    - ```scrollToEnd```
+    - ```scrollWithoutAnimationTo```
+    - ```flashScrollIndicators```
 
 - **[StyleSheet](https://facebook.github.io/react-native/docs/stylesheet.html)**
   - Provides an abstraction layer similar to CSS stylesheets.
+  - e.g.
+    ```js
+    // Creating a StyleSheet
+
+    const styles = StyleSheet.create({
+      container: {
+        borderRadius: 4,
+        borderWidth: 0.5,
+        borderColor: '#d6d7da',
+      },
+      title: {
+        fontSize: 19,
+        fontWeight: 'bold',
+      },
+      activeTitle: {
+        color: 'red',
+      },
+    });
+    ```
+    ```js
+    // Using a StyleSheet
+
+    <View style={styles.container}>
+      <Text style={[styles.title, this.props.isActive && styles.activeTitle]} />
+    </View>
+    ```
 
 ## User Interface
 
@@ -83,7 +106,12 @@ Components that render common UI controls on any platform.
   - A basic button component for handling touches that should render nicely on any platform.
   - e.g.
     ```js
-    
+    <Button
+      onPress={onPressLearnMore}
+      title="Learn More"
+      color="#841584"
+      accessibilityLabel="Learn more about this purple button"
+    />
     ```
 
 - **[Picker](https://facebook.github.io/react-native/docs/picker.html)**
@@ -106,17 +134,9 @@ Components that render common UI controls on any platform.
 
 - **[Slider](https://facebook.github.io/react-native/docs/slider.html)**
   - A component used to select a single value from a range of values.
-  - e.g.
-    ```js
-    
-    ```
 
 - **[Switch](https://facebook.github.io/react-native/docs/switch.html)**
   - Renders a boolean input.
-  - e.g.
-    ```js
-    
-    ```
   
 ## List Views
 
@@ -124,14 +144,51 @@ List view components only render elements that are currently showing on the scre
 
 - **[FlatList](https://facebook.github.io/react-native/docs/flatlist.html)**
   - Renders performant, scrollable lists
+  - Methods
+    - scrollToEnd
+    - scrollToIndex
+    - scrollToItem
+    - scrollToOffset
+    - recordInteraction
+    - flashScrollIndicators
   - e.g.
     ```js
-    
+    <FlatList
+      data={[{key: 'a'}, {key: 'b'}]}
+      renderItem={({item}) => <Text>{item.key}</Text>}
+    />
     ```
 
 - **[SectionList](https://facebook.github.io/react-native/docs/sectionlist.html)**
   - Like **FlatList** but for sectioned lists
   - e.g.
     ```js
+    // Homogeneous Rendering
     
+    <SectionList
+      renderItem={({item, index, section}) => <Text key={index}>{item}</Text>}
+      renderSectionHeader={({section: {title}}) => (
+        <Text style={{fontWeight: 'bold'}}>{title}</Text>
+      )}
+      sections={[
+        {title: 'Title1', data: ['item1', 'item2']},
+        {title: 'Title2', data: ['item3', 'item4']},
+        {title: 'Title3', data: ['item5', 'item6']},
+      ]}
+      keyExtractor={(item, index) => item + index}
+    />
+    ```
+    ```js
+    Heterogeneous Rendering/No Section Headers
+    
+    const overrideRenderItem = ({ item, index, section: { title, data } }) => <Text key={index}>Override{item}</Text>
+
+    <SectionList
+      renderItem={({ item, index, section }) => <Text key={index}>{item}</Text>}
+      sections={[
+        { title: 'Title1', data: ['item1', 'item2'], renderItem: overrideRenderItem },
+        { title: 'Title2', data: ['item3', 'item4'] },
+        { title: 'Title3', data: ['item5', 'item6'] },
+      ]}
+    />
     ```
