@@ -129,56 +129,149 @@ These components may come in handy for certain applications. For an exhaustive l
 
 - **[Dimensions]()**
   - Provides an interface for getting device dimensions.
-  - e.g.
-    ```js
-    
-    ```
+  - Methods
+    - ```set```
+      ```static set(dims)
+    - ```get```
+      ```static get(dim)```
+    - ```addEventListener```
+      ```static addEventListener(type, handler)```
+    - ```removeEventListener```
+      ```static removeEventListener(type, handler)```
 
 - **[KeyboardAvoidingView]()**
   - Provides a view that moves out of the way of the virtual keyboard automatically.
   - e.g.
     ```js
-    
+    <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+      ... your UI ...
+    </KeyboardAvoidingView>;
     ```
 
 - **[Linking]()**
   - Provides a general interface to interact with both incoming and outgoing app links.
+  - Methods
+    - ```constructor```
+    - ```addEventListener```
+    - ```removeEventListener```
+    - ```openURL(url)```
+    - ```canOpenURL(url)```
+      - Returns a promise object
+    - ```getInitialURL()```
+      - If the app launch was triggered by an app link, it will give the link url
+      - Otherwise it will give null
   - e.g.
     ```js
-    
+    componentDidMount() {
+      Linking.getInitialURL().then((url) => {
+        if (url) {
+          console.log('Initial url is: ' + url);
+        }
+      }).catch(err => console.error('An error occurred', err));
+    }
     ```
 
 - **[Modal]()**
   - Provides a simple way to present content above an enclosing view.
   - e.g.
     ```js
-    
+    <Modal
+      animationType="slide"
+      transparent={false}
+      visible={this.state.modalVisible}
+      onRequestClose={() => {
+        Alert.alert('Modal has been closed.');
+      }}>
+      <View style={{marginTop: 22}}>
+        <View>
+          <Text>Hello World!</Text>
+
+          <TouchableHighlight
+            onPress={() => {
+              this.setModalVisible(!this.state.modalVisible);
+            }}>
+            <Text>Hide Modal</Text>
+          </TouchableHighlight>
+        </View>
+      </View>
+    </Modal>
     ```
 
 - **[PixelRatio]()**
   - Provides access to the device pixel density.
+    - Rule thumb is to mutliply image size by pixel ratio for image resolution
+  - Methods
+    - ```get```
+    - ```getFontScale```
+    - ```getPixelSizeForLayoutSize```
+      - Converts layout size (dp) to pixel size (px)
+      ```js
+      static getPixelSizeForLayoutSize(layoutSize)
+      ```
+    - ```roundToNearestPixel```
+      - Rounds a layout size (dp) to the nearest layout size that corresponds to an integer number of pixels.
+      ```js
+      static roundToNearestPixel(layoutSize)
+      ```
+      ```js
+      PixelRatio.roundToNearestPixel(8.4) = 8.33
+      // 8.33 is the closest layout size that has a corresponding pixel integer of 25.
+      ```
   - e.g.
     ```js
-    
+    var image = getImage({
+      width: PixelRatio.getPixelSizeForLayoutSize(200),
+      height: PixelRatio.getPixelSizeForLayoutSize(100),
+    });
     ```
 
 - **[RefreshControl]()**
   - This component is used inside a ScrollView to add pull to refresh functionality.
+    - When the ScrollView is at scrollY: 0, swiping down triggers an onRefresh event.
   - e.g.
     ```js
-    
+    <ScrollView
+      refreshControl={
+        <RefreshControl
+          refreshing={this.state.refreshing}
+          onRefresh={this._onRefresh}
+        />
+      }
+      ...
+    />
     ```
 
 - **[StatusBar]()**
   - Component to control the app status bar.
+  - Constants
+    - ```currentHeight``` (Android only)
+      - Height of status bar
+  - Methods
+    - ```setHidden```
+    - ```setBarStyle```
+    - ```setNetworkActivityIndicatorVisible```
+    - ```setBackgroundColor```
+    - ```setTranslucent```
+  - Type Definitions
+    - ```StatusBarStyle```
+    - ```StatusBarAnimation```
   - e.g.
     ```js
-    
+    <View>
+      <StatusBar backgroundColor="blue" barStyle="light-content" />
+      <View>
+        <StatusBar hidden={route.statusBarHidden} />
+        ...
+      </View>
+    </View>
     ```
 
 - **[WebView]()**
   - A component that renders web content in a native view.
+  - Note:  Only use the [React Native WebView fork](https://github.com/react-native-community/react-native-webview) of this component.
   - e.g.
     ```js
-    
+    <WebView
+      source={{ uri: "https://facebook.github.io/react-native/" }}
+    />
     ```
