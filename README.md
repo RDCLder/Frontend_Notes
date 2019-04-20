@@ -1,8 +1,13 @@
-# React_Notes
+# Frontend Notes
 
-## React & Redux
+## React
 
 - [React](./React/react.md)
+
+## Angular
+
+## Redux
+
 - [Redux](https://github.com/RDCLder/egghead.io_redux_course_notes)
 
 ## React Native
