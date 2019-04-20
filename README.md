@@ -6,6 +6,8 @@
 
 ## Angular
 
+- [Angular](./Angular/angular.md)
+
 ## Redux
 
 - [Redux](https://github.com/RDCLder/egghead.io_redux_course_notes)
