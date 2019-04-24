@@ -6,7 +6,8 @@
 
 ## Angular
 
-- [Angular](./Angular/angular.md)
+- [Angular 7](./Angular/angular.md)
+- [RxJS](./Angular/rxjs.md)
 
 ## Redux
 
