@@ -1,4 +1,4 @@
-# Routing and Navigating Pages
+# Angular Routing
 
 - How Routing Works
   - Routing traditionally happened by loading different web pages from the server based on which URL was requested
