@@ -1,9 +1,5 @@
 # Frontend Notes
 
-## General
-
-- [Chrome Developer Tools](./General/dev_tools.md)
-
 ## React
 
 - [React](./React/react.md)
