@@ -46,6 +46,12 @@
   - Add a ```<base href="/">``` tag as a child element
     - The route ```"/"``` is used if the app is hosted directly on the server
 
+- Linking to Routes
+  - Go to the element that you want to use as a link
+  - Add the following property
+    ```[routerLink]="['/path', addOn]"```
+    - The addOn is added to the base path for the new route and usually corresponds to a parameter
+
 - Router components don't need selectors as they are encompassed by the ```routes.ts``` file
 
 - Accessing Parameters
