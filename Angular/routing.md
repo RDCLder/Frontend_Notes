@@ -8,6 +8,8 @@
 
 ## Adding Multiple Pages
 
+- Router components don't need selectors as they are encompassed by the ```routes.ts``` file
+
 - Adding a Route
   - In the root app file, add a ```<route-outlet></route-outlet>``` element to the template
   - Create a ```routes.ts``` file.  This will hold all the routing information for the root app.
@@ -66,7 +68,7 @@
       }
       ```
 
-- Router components don't need selectors as they are encompassed by the ```routes.ts``` file
+## Miscellaneous
 
 - Accessing Parameters
   - Import the following
@@ -75,3 +77,22 @@
     ```ts
     this.route.snapshot.params['paramName']
     ```
+
+- Guarding Against Route Activation
+  - If a route doesn't exist or should only be accessible under certain conditions, a route guarder can be used
+  - Create a route guarder service that checks for a certain condition
+    - Create a component with the following imports and the path to the service
+      ```ts
+      import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
+      import { Injectable } from '@angular/core';
+      ```
+    - The component will implement the canActivate method which checks for the conditions to activate
+      ```ts
+      export class EventRouteActivator implements CanActivate {
+        constructor(private: service: Service, private router: Router) {}
+        
+        canActivate(route: ActivatedRouteSnapshot) {
+          // serviceLogic
+        }
+      }
+      ```
