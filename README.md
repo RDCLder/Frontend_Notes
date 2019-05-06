@@ -7,6 +7,7 @@
 ## Angular
 
 - [Angular Overview](./Angular/angular.md)
+- [Routing](./Angular/routing.md)
 - [RxJS](./Angular/rxjs.md)
 
 ## Redux
