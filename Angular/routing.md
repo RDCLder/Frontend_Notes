@@ -52,6 +52,20 @@
     ```[routerLink]="['/path', addOn]"```
     - The addOn is added to the base path for the new route and usually corresponds to a parameter
 
+- Programmatically Navigating to a Route
+  - ```<a [routerLink]="['/path']">``` can be used for direct routing
+  - If you need to perform some logic as a part of the routing, use ```this.router.navigate(['/path'])```
+    - Template
+      ```html
+      <button (click)="cancel()"></button>
+      ```
+    - JavaScript
+      ```ts
+      cancel() {
+        this.router.navigate(['/events']);
+      }
+      ```
+
 - Router components don't need selectors as they are encompassed by the ```routes.ts``` file
 
 - Accessing Parameters
