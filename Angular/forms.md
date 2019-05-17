@@ -9,5 +9,11 @@
 
 ## Reactive Forms
 
-- aka model-driven form
+- aka Model-Driven Form
+  - Define fields and validation in component
+  - Connect component fields to template fields
 
+- Benefits
+  - Allows you to build form and validation more dynamically based on decisions made in your code
+  - Validation is unit-testable
+  
